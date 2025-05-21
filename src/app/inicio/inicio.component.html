@@ -1,0 +1,27 @@
+<!-- src/app/inicio/inicio.component.html -->
+<div class="hero-container">
+  <div class="text-content">
+    <h1 class="logo">Marlin <span>Odontológico</span></h1>
+    <p class="slogan">
+      Planos de saúde odontológico com<br />custos acessíveis feitos na medida
+      certa!
+    </p>
+
+    <div class="pricing">
+      <p class="price-label">A partir de</p>
+      <p class="price-value">R$ 30,00</p>
+    </div>
+
+    <button class="cta-button" routerLink="/planos">Ver Planos!</button>
+  </div>
+
+  <div class="image-content">
+    <img
+      [src]="dentistaImg"
+      alt="dentistaImg"
+      class="imagem-dentista"
+      width="600"
+      height="400"
+    />
+  </div>
+</div>

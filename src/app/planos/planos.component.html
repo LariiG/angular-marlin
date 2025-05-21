@@ -1,0 +1,73 @@
+<div class="planos-container">
+  <h2>Encontre o Plano Odontológico Ideal</h2>
+
+  <!-- Filtros -->
+  <div class="filtros-container">
+    <!-- Caixa de busca -->
+    <mat-form-field appearance="outline" class="busca-input">
+      <input
+        matInput
+        [(ngModel)]="termoBusca"
+        (input)="aplicarFiltro()"
+        placeholder="Buscar Plano"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <!-- Dropdown de ordenação -->
+    <mat-form-field appearance="fill" class="filtro-select">
+      <mat-label>Filtrar por</mat-label>
+      <mat-select
+        [(ngModel)]="ordenacaoSelecionada"
+        (selectionChange)="alterarOrdenacao()"
+        panelClass="filtro-select-panel"
+      >
+        <mat-option value="valor-asc">Menor Preço</mat-option>
+        <mat-option value="valor-desc">Maior Preço</mat-option>
+        <mat-option value="nome-asc">Nome (A-Z)</mat-option>
+        <mat-option value="nome-desc">Nome (Z-A)</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Estado de carregamento -->
+  <div *ngIf="carregando" class="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <!-- Lista de planos  -->
+  <div *ngIf="!carregando" class="cards-grid">
+    <div
+      *ngFor="let plano of planos$ | async"
+      class="plano-card"
+      [class.destaque]="plano.destaque"
+    >
+      <div class="card-header">
+        <h3>{{ plano.nome }}</h3>
+        <div class="preco">
+          {{ formatarValor(plano.valor) }}<span>/mês</span>
+        </div>
+        <span *ngIf="plano.destaque" class="badge">RECOMENDADO</span>
+      </div>
+
+      <div class="card-body">
+        <div class="descricao">
+          <h4>Cobertura:</h4>
+          <p>{{ plano.descricao }}</p>
+        </div>
+        <button class="cta-button">
+          Contratar
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensagem quando não há resultados -->
+  <div
+    *ngIf="!carregando && (planos$ | async)?.length === 0"
+    class="nenhum-resultado"
+  >
+    Nenhum plano encontrado com os filtros atuais.
+  </div>
+</div>
