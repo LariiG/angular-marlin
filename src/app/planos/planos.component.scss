@@ -1,4 +1,3 @@
-/* Correção para ícones não aparecendo */
 mat-icon {
   font-family: "Material Icons" !important;
 }
@@ -169,7 +168,6 @@ $cor-fundo: #f8f9fa;
   align-items: center;
 }
 
-/* Garante que o container do form-field tenha contexto de posicionamento */
 .mat-form-field {
   position: relative;
   display: inline-block;
@@ -177,7 +175,6 @@ $cor-fundo: #f8f9fa;
   z-index: 1;
 }
 
-/* Remove qualquer transform que possa estar afetando */
 .mat-form-field-wrapper {
   transform: none !important;
 }
@@ -196,34 +193,32 @@ $cor-fundo: #f8f9fa;
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas com largura igual */
-  gap: 20px; /* Espaçamento entre os cards */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   margin-top: 30px;
 
-  /* Garante que os cards tenham altura uniforme */
   .card-body {
-    flex-grow: 1; /* Faz o corpo do card ocupar o espaço disponível */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
   }
 
   .cta-button {
-    margin-top: auto; /* Empurra o botão para baixo */
+    margin-top: auto;
   }
 
   /* Responsividade - ajuste para telas menores */
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr; /* 1 coluna em mobile */
+    grid-template-columns: 1fr;
   }
 }
 
 .plano-card {
-  /* Mantenha seus estilos atuais e adicione: */
-  height: 100%; /* Garante altura uniforme */
+  height: 100%;
   display: flex;
   flex-direction: column;
 }

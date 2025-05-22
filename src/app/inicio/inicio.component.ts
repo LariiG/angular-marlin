@@ -9,6 +9,5 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
 })
 export class InicioComponent {
-  // Remova a barra no início para caminho relativo
   dentistaImg = 'assets/images/dentista.png';
 }

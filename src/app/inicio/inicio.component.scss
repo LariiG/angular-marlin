@@ -1,4 +1,3 @@
-/* src/app/inicio/inicio.component.scss */
 .hero-container {
   display: flex;
   align-items: center;
@@ -12,7 +11,7 @@
   .text-content {
     flex: 1;
     max-width: 600px;
-    text-align: left; /* Alinhamento à esquerda */
+    text-align: left;
   }
 
   .image-content {
@@ -81,7 +80,7 @@
   }
 }
 
-/* Responsividade - ajuste para telas menores */
+/* Responsividade - */
 @media (max-width: 768px) {
   .hero-container {
     flex-direction: column;

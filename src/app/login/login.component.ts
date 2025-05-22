@@ -39,7 +39,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class LoginComponent {
   loginForm: FormGroup;
   carregando = false;
-  mostrarRedesSociais = true; // Controle para desenvolvimento
+  mostrarRedesSociais = true;
 
   constructor(
     private fb: FormBuilder,
@@ -69,12 +69,6 @@ export class LoginComponent {
       'facebook',
       this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/facebook.svg')
     );
-
-    // Ícone do GitHub (exemplo adicional)
-    this.iconRegistry.addSvgIcon(
-      'github',
-      this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/github.svg')
-    );
   }
 
   onSubmit(): void {
@@ -90,10 +84,7 @@ export class LoginComponent {
     }
   }
 
-  recuperarSenha(): void {
-    console.log('Redirecionar para recuperação de senha');
-    // this.router.navigate(['/recuperar-senha']);
-  }
+  recuperarSenha(): void {}
 
   loginComRedeSocial(rede: string): void {
     console.log(`Login com ${rede}`);

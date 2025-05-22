@@ -9,6 +9,18 @@
   background: #f5f5f5;
 }
 
+.google-colors {
+  background: conic-gradient(
+    #4285f4 0% 25%,
+    #db4437 25% 50%,
+    #f4b400 50% 75%,
+    #0f9d58 75% 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .login-card {
   width: 100%;
   max-width: 420px;

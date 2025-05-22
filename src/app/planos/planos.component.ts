@@ -50,7 +50,7 @@ export class PlanosComponent implements OnInit {
 
   alterarOrdenacao(): void {
     const [campo, direcao] = this.ordenacaoSelecionada.split('-') as [
-      'nome' | 'valor', // Tipagem explícita dos campos ordenáveis
+      'nome' | 'valor',
       'asc' | 'desc'
     ];
     this.planoService.atualizarOrdenacao(campo, direcao);
