@@ -1,10 +1,65 @@
-<!-- src/app/app.component.html -->
-<header>
-  <nav>
-    <a routerLink="/">Início</a>
-    <a routerLink="/planos">Planos</a>
-    <a routerLink="/contato">Contato</a>
-    <button class="login-btn" routerLink="/login">Login</button>
-  </nav>
-</header>
-<router-outlet></router-outlet>
+<div class="app-container">
+  <!-- Navbar Original -->
+  <header class="original-nav">
+    <nav>
+      <a routerLink="/">Início</a>
+      <a routerLink="/planos">Planos</a>
+      <a routerLink="/contato">Contato</a>
+      <button mat-stroked-button class="login-btn" routerLink="/login">
+        <mat-icon>account_circle</mat-icon>
+        <span>Login</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Rodapé Estilo Marlin -->
+  <footer class="marlin-footer">
+    <div class="footer-border"></div>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a routerLink="/">Início</a>
+        <a routerLink="/planos">Planos</a>
+        <a routerLink="/contato">Contato</a>
+      </div>
+
+      <!-- No footer, adicione: -->
+      <div class="social-section">
+        <p class="social-text">
+          <mat-icon>thumb_up</mat-icon>Siga a gente nas redes sociais
+        </p>
+        <div class="social-icons">
+          <a href="#" aria-label="TikTok"
+            ><mat-icon svgIcon="tiktok"></mat-icon
+          ></a>
+          <a href="#" aria-label="redex"
+            ><mat-icon svgIcon="redex"></mat-icon
+          ></a>
+          <a href="#" aria-label="Instagram"
+            ><mat-icon svgIcon="instagram"></mat-icon
+          ></a>
+          <a href="#" aria-label="Facebook"
+            ><mat-icon svgIcon="facebook"></mat-icon
+          ></a>
+          <a href="#" aria-label="YouTube"
+            ><mat-icon svgIcon="youtube"></mat-icon
+          ></a>
+          <a href="#" aria-label="LinkedIn"
+            ><mat-icon svgIcon="linkedin"></mat-icon
+          ></a>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <span>Desenvolvido por Larissa Gontijo</span><br />
+        <span
+          >Copyright© Marlin 2025 <br />Todos os direitos reservados<br
+        /></span>
+        <a href="#">Política de Privacidade</a>
+      </div>
+    </div>
+  </footer>
+</div>

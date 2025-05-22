@@ -1,1 +1,46 @@
-<p>contato!</p>
+<div class="contato-compacto">
+  <h3 class="titulo">Fale Conosco</h3>
+
+  <form [formGroup]="formulario" (ngSubmit)="enviar()">
+    <!-- Nome -->
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" />
+    </mat-form-field>
+
+    <!-- E-mail -->
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" type="email" />
+    </mat-form-field>
+
+    <!-- Telefone -->
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Telefone</mat-label>
+      <input
+        matInput
+        formControlName="telefone"
+        placeholder="(00) 00000-0000"
+      />
+    </mat-form-field>
+
+    <!-- Mensagem (mais compacta) -->
+    <mat-form-field
+      appearance="outline"
+      floatLabel="always"
+      class="mensagem-field"
+    >
+      <mat-label>Mensagem</mat-label>
+      <textarea matInput formControlName="mensagem" rows="3"></textarea>
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      [disabled]="formulario.invalid"
+    >
+      <mat-icon>mail</mat-icon> Enviar
+    </button>
+  </form>
+</div>

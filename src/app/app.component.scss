@@ -1,30 +1,206 @@
-nav {
-  background: #2c3e50;
-  padding: 1rem;
+/* Estrutura Principal */
+.app-container {
   display: flex;
-  gap: 1rem;
-  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  a {
-    color: white;
-    text-decoration: none;
+/* Navbar Original Preservada */
+.original-nav {
+  background: #00a896;
+  padding: 1rem 2rem;
 
-    &:hover {
-      text-decoration: underline;
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0;
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      &.active {
+        border-bottom: 2px solid white;
+      }
+    }
+
+    .login-btn {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #00a896;
+      background: white;
+
+      mat-icon {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+/* Conteúdo */
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Rodapé Estilo Marlin */
+.marlin-footer {
+  background: #00a896;
+  padding: 0.5rem 2rem; /* Reduzi o padding vertical */
+  font-size: 0.85rem;
+  color: white;
+
+  .footer-border {
+    height: 3px;
+    background: #00a896;
+    margin-bottom: 1rem;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+
+    .footer-legal {
+      display: flex;
+      gap: 1rem;
+      color: white;
+
+      a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
     }
   }
 
-  .login-btn {
-    margin-left: auto;
-    padding: 0.5rem 1rem;
-    background: #42b983;
+  .footer-links a {
     color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    transition: opacity 0.2s;
+    font-size: 18px;
 
     &:hover {
-      background: #369f6b;
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+  }
+}
+
+.social-section {
+  margin-top: 1.5rem;
+  text-align: center;
+  width: 100%;
+
+  .social-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+
+    a {
+      color: #666;
+      transition: all 0.3s ease;
+      display: flex;
+      padding: 0.5rem;
+      border-radius: 50%;
+
+      &:hover {
+        transform: translateY(-3px);
+        color: #00a896;
+        background: rgba(0, 168, 150, 0.1);
+      }
+
+      mat-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+/* Cores específicas para cada rede social (opcional) */
+a[aria-label="TikTok"]:hover {
+  color: #000000 !important;
+}
+a[aria-label="redex"]:hover {
+  color: #1da1f2 !important;
+}
+a[aria-label="Instagram"]:hover {
+  color: #e1306c !important;
+}
+a[aria-label="Facebook"]:hover {
+  color: #1877f2 !important;
+}
+a[aria-label="YouTube"]:hover {
+  color: #ff0000 !important;
+}
+a[aria-label="LinkedIn"]:hover {
+  color: #0077b5 !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .original-nav nav {
+    flex-direction: column;
+    gap: 1rem;
+
+    .login-btn {
+      margin-left: 0;
+    }
+  }
+
+  .marlin-footer {
+    padding: 0.6rem 1rem;
+
+    .footer-content {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .footer-links a {
+      margin: 0 0.5rem;
+      .footer-legal {
+        flex-direction: column;
+        gap: 0.3rem !important;
+      }
     }
   }
 }

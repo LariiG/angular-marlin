@@ -1,0 +1,52 @@
+.contato-compacto {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .titulo {
+    color: #00a896;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+  }
+
+  form {
+    display: grid;
+    gap: 1rem;
+
+    mat-form-field {
+      margin-bottom: 0.5rem;
+
+      &.mensagem-field {
+        margin-top: 0.5rem;
+      }
+    }
+
+    button {
+      justify-self: end;
+      padding: 0 1.5rem;
+      margin-top: 0.5rem;
+
+      mat-icon {
+        margin-right: 8px;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+/* Validações visuais */
+mat-error {
+  font-size: 0.75rem;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 600px) {
+  .contato-compacto {
+    padding: 1rem;
+    margin: 0 1rem;
+  }
+}

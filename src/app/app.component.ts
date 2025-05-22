@@ -1,20 +1,44 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, provideRouter } from '@angular/router';
-import { routes } from './app.routes';
-import { ContatoComponent } from './contato/contato.component';
-import { LoginComponent } from './login/login.component';
+import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  standalone: true,
   selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, RouterModule, MatButtonModule, MatIconModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [
-    CommonModule,
-    RouterModule,
-    ContatoComponent,
-    LoginComponent, // ← Adicione esta linha
-  ],
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'meu-app-angular';
+
+  constructor(
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
+  ) {
+    this.registrarIconesSociais();
+  }
+
+  private registrarIconesSociais(): void {
+    const redesSociais = [
+      'tiktok',
+      'redex',
+      'instagram',
+      'facebook',
+      'youtube',
+      'linkedin',
+    ];
+
+    redesSociais.forEach((rede) => {
+      this.iconRegistry.addSvgIcon(
+        rede,
+        this.sanitizer.bypassSecurityTrustResourceUrl(
+          `assets/icons/${rede}.svg`
+        )
+      );
+    });
+  }
+}
