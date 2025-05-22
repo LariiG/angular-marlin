@@ -1,7 +1,12 @@
 <div class="app-container">
-  <!-- Navbar Original -->
+  <!-- Navbar -->
   <header class="original-nav">
     <nav>
+      <img
+        src="assets/images/denteFeliz.png"
+        alt="Logo Marlin"
+        class="nav-logo"
+      />
       <a routerLink="/">Início</a>
       <a routerLink="/planos">Planos</a>
       <a routerLink="/contato">Contato</a>
@@ -17,47 +22,63 @@
     <router-outlet></router-outlet>
   </main>
 
-  <!-- Rodapé Estilo Marlin -->
+  <!-- Rodapé -->
   <footer class="marlin-footer">
     <div class="footer-border"></div>
     <div class="footer-content">
+      <div class="footer-brand">
+        <img
+          src="assets/images/denteFeliz.png"
+          alt="Logo Marlin"
+          class="footer-logo"
+        />
+      </div>
+
       <div class="footer-links">
         <a routerLink="/">Início</a>
         <a routerLink="/planos">Planos</a>
         <a routerLink="/contato">Contato</a>
       </div>
 
-      <!-- No footer, adicione: -->
+      <!-- Redes sociais -->
       <div class="social-section">
-        <p class="social-text">
-          <mat-icon>thumb_up</mat-icon>Siga a gente nas redes sociais
-        </p>
-        <div class="social-icons">
-          <a href="#" aria-label="TikTok"
-            ><mat-icon svgIcon="tiktok"></mat-icon
-          ></a>
-          <a href="#" aria-label="redex"
-            ><mat-icon svgIcon="redex"></mat-icon
-          ></a>
-          <a href="#" aria-label="Instagram"
-            ><mat-icon svgIcon="instagram"></mat-icon
-          ></a>
-          <a href="#" aria-label="Facebook"
-            ><mat-icon svgIcon="facebook"></mat-icon
-          ></a>
-          <a href="#" aria-label="YouTube"
-            ><mat-icon svgIcon="youtube"></mat-icon
-          ></a>
-          <a href="#" aria-label="LinkedIn"
-            ><mat-icon svgIcon="linkedin"></mat-icon
-          ></a>
+        <div class="social-section">
+          <p class="social-text">
+            <mat-icon>thumb_up</mat-icon>Siga a gente nas redes sociais
+          </p>
+          <div class="social-icons">
+            <!-- TikTok -->
+            <a href="#" aria-label="TikTok"><mat-icon>music_video</mat-icon></a>
+
+            <!-- X (Twitter) -->
+            <a href="#" aria-label="X (Twitter)"
+              ><mat-icon>flutter_dash</mat-icon></a
+            >
+
+            <!-- Instagram -->
+            <a href="#" aria-label="Instagram"
+              ><mat-icon>photo_camera</mat-icon></a
+            >
+
+            <!-- Facebook -->
+            <a href="#" aria-label="Facebook"><mat-icon>thumb_up</mat-icon></a>
+
+            <!-- YouTube -->
+            <a href="#" aria-label="YouTube"
+              ><mat-icon>play_circle</mat-icon></a
+            >
+
+            <!-- LinkedIn -->
+            <a href="#" aria-label="LinkedIn"><mat-icon>work</mat-icon></a>
+          </div>
         </div>
       </div>
+
+      <!-- Informações legais -->
       <div class="footer-legal">
         <span>Desenvolvido por Larissa Gontijo</span><br />
-        <span
-          >Copyright© Marlin 2025 <br />Todos os direitos reservados<br
-        /></span>
+        <span>Copyright© 2025</span><br />
+        <span>Todos os direitos reservados</span><br />
         <a href="#">Política de Privacidade</a>
       </div>
     </div>
