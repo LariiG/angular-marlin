@@ -4,6 +4,18 @@ Aplicação para contratação de planos odontológicos desenvolvida em Angular 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
+### 📡 Integração com API
+
+O projeto **simula uma API REST** utilizando:
+
+- Dados mockados em `assets/data/planos.json`
+- Serviços Angular com `HttpClient`
+- Pronto para migração para uma API real (basta atualizar `environment.ts`)
+
+## 🐛 Debugging e Logs
+
+O projeto utiliza `console.log` para simular comportamentos de API durante o desenvolvimento.
+
 ## Development server
 
 ## 🚀 Começando
