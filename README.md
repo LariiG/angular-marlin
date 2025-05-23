@@ -1,8 +1,17 @@
-# MeuAppAngular16Final
+# 🦷 Plano Odontológico Angular
+
+Aplicação para contratação de planos odontológicos desenvolvida em Angular 16 (standalone).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
 ## Development server
+
+## 🚀 Começando
+
+### Pré-requisitos
+
+- Node.js 18+ [Download](https://nodejs.org/)
+- Angular CLI 16+ (`npm install -g @angular/cli`)
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 

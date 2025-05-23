@@ -51,8 +51,7 @@ export class PlanosComponent implements OnInit {
     { valor: 'nome-desc', texto: 'Nome: Z-A', ariaLabel: 'Ordenar de Z a A' },
   ];
 
-  ordenacaoSelecionada = 'valor-asc'; // Valor padrão
-
+  ordenacaoSelecionada = 'valor-asc';
   constructor(private planoService: PlanoService) {}
 
   ngOnInit(): void {
@@ -65,7 +64,6 @@ export class PlanosComponent implements OnInit {
       next: () => (this.carregando = false),
       error: () => {
         this.carregando = false;
-        // Aqui você pode adicionar tratamento de erro mais elaborado
       },
       complete: () => (this.carregando = false),
     });
@@ -102,13 +100,11 @@ export class PlanosComponent implements OnInit {
   }
 
   contratarPlano(plano: Plano): void {
-    // Reseta o estado do modal antes de abrir novamente
     this.planoSelecionado = null;
     this.mensagemContratacao = null;
     this.carregandoContratacao = false;
 
-    // Define o novo plano selecionado
-    this.planoSelecionado = { ...plano }; // Cria uma cópia do plano
+    this.planoSelecionado = { ...plano };
 
     console.log(
       '🔘 Plano selecionado para contratação:',
