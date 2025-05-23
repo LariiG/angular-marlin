@@ -1,17 +1,25 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, combineLatest, of } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import {
+  Observable,
+  throwError,
+  BehaviorSubject,
+  combineLatest,
+  of,
+} from 'rxjs';
 import {
   map,
   shareReplay,
   catchError,
   tap,
   distinctUntilChanged,
+  delay,
 } from 'rxjs/operators';
 import { Plano } from '../models/plano.model';
 
 @Injectable({ providedIn: 'root' })
 export class PlanoService {
+  private http = inject(HttpClient);
   private planos$: Observable<Plano[]>;
   private filtroSubject = new BehaviorSubject<string>('');
   private ordenacaoSubject = new BehaviorSubject<{
@@ -22,7 +30,7 @@ export class PlanoService {
     direcao: 'asc',
   });
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this.planos$ = this.http.get<Plano[]>('/assets/data/planos.json').pipe(
       tap(() => console.log('Dados dos planos carregados')),
       catchError((error) => {
@@ -94,5 +102,30 @@ export class PlanoService {
     return this.planos$.pipe(
       map((planos) => (planos ? planos.filter((plano) => plano.destaque) : []))
     );
+  }
+  getDetalhesPlano(id: string): Observable<Plano | undefined> {
+    return this.planos$.pipe(
+      map((planos) => {
+        const planoEncontrado = planos.find((plano) => plano.id === id);
+        if (!planoEncontrado) {
+          throw new Error('Plano não encontrado');
+        }
+        return planoEncontrado;
+      }),
+      catchError((error) => {
+        console.error('Erro ao buscar detalhes:', error);
+        return throwError(
+          () => new Error(error.message || 'Falha ao obter detalhes')
+        );
+      })
+    );
+  }
+
+  confirmarContratacao(plano: {
+    id: string;
+  }): Observable<{ message: string; plano: any }> {
+    return this.http.post<{ message: string; plano: any }>('/api/contratacao', {
+      id: plano.id,
+    });
   }
 }

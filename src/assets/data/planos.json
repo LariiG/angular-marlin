@@ -1,35 +1,41 @@
 [
   {
+    "id": "1",
     "nome": "Plano Dental 1",
     "valor": 30.0,
     "descricao": "Rol ANS, Prótese unitária em dentes anteriores e posteriores em cerômero, Procedimentos em ortodontia",
     "destaque": false
   },
   {
+    "id": "2",
     "nome": "Plano Dental 2",
     "valor": 80.0,
     "descricao": "Plano Dental 1, Prótese removível (inclusive prótese total), prótese unitária em dentes anteriores e posteriores em cerômero.",
     "destaque": true
   },
   {
+    "id": "3",
     "nome": "Plano Dental 3",
     "valor": 150.0,
     "descricao": "Plano Dental 2, Documentação ortodôntica completa*, manutenção mensal, clareamento com moldeira (gel + moldeira) e placa miorrelaxante.",
     "destaque": false
   },
   {
+    "id": "4",
     "nome": "Plano Dental 4",
     "valor": 200.0,
     "descricao": "Plano Dental 3, Prótese fixa, inclusive em porcelana, e clareamento em consultório.",
     "destaque": false
   },
   {
+    "id": "5",
     "nome": "Plano Dental 5",
     "valor": 250.0,
     "descricao": "Plano Dental 4, Cobertura ortodôntica com alinhador invisível com instalação, Prótese unitária em dentes anteriores e posteriores em cerômero.",
     "destaque": false
   },
   {
+    "id": "6",
     "nome": "Plano Dental 6",
     "valor": 300.0,
     "descricao": "Plano Dental 5, Restauração, Extração, Clareamento em gel e moldeira (caseiro), Placa miorrelaxante, E muito mais.",

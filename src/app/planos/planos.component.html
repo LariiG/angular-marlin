@@ -4,12 +4,15 @@
   <!-- Filtros -->
   <div class="filtros-container">
     <!-- Caixa de busca -->
-    <mat-form-field appearance="outline" class="busca-input">
+    <mat-form-field>
+      <mat-label>Buscar Plano</mat-label>
+      <!-- Visível e acessível -->
       <input
         matInput
         [(ngModel)]="termoBusca"
         (input)="aplicarFiltro()"
-        placeholder="Buscar Plano"
+        placeholder="Ex: Plano Dental Básico"
+        aria-label="Digite o nome do plano para busca"
       />
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
@@ -18,14 +21,20 @@
     <mat-form-field appearance="fill" class="filtro-select">
       <mat-label>Filtrar por</mat-label>
       <mat-select
+        aria-label="Selecione o tipo"
         [(ngModel)]="ordenacaoSelecionada"
         (selectionChange)="alterarOrdenacao()"
-        panelClass="filtro-select-panel"
       >
-        <mat-option value="valor-asc">Menor Preço</mat-option>
-        <mat-option value="valor-desc">Maior Preço</mat-option>
-        <mat-option value="nome-asc">Nome (A-Z)</mat-option>
-        <mat-option value="nome-desc">Nome (Z-A)</mat-option>
+        <mat-option [value]="null" disabled hidden>
+          Selecione o tipo
+        </mat-option>
+        <mat-option
+          *ngFor="let opt of opcoesOrdenacao"
+          [value]="opt.valor"
+          [attr.aria-label]="opt.ariaLabel"
+        >
+          {{ opt.texto }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -38,7 +47,7 @@
   <!-- Lista de planos  -->
   <div *ngIf="!carregando" class="cards-grid">
     <div
-      *ngFor="let plano of planos$ | async"
+      *ngFor="let plano of planos$ | async; trackBy: trackByPlano"
       class="plano-card"
       [class.destaque]="plano.destaque"
     >
@@ -55,19 +64,92 @@
           <h4>Cobertura:</h4>
           <p>{{ plano.descricao }}</p>
         </div>
-        <button class="cta-button">
-          Contratar
-          <mat-icon>arrow_forward</mat-icon>
+        <button
+          class="cta-button"
+          [attr.aria-label]="'Contratar plano ' + plano.nome"
+          (click)="contratarPlano(plano)"
+          [disabled]="carregandoContratacao"
+        >
+          <span *ngIf="!carregandoContratacao; else loading">Contratar</span>
+          <ng-template #loading>
+            <mat-spinner diameter="20" color="accent"></mat-spinner>
+          </ng-template>
+          <mat-icon aria-hidden="true" *ngIf="!carregandoContratacao"
+            >arrow_forward</mat-icon
+          >
         </button>
       </div>
     </div>
-  </div>
 
-  <!-- Mensagem quando não há resultados -->
-  <div
-    *ngIf="!carregando && (planos$ | async)?.length === 0"
-    class="nenhum-resultado"
-  >
-    Nenhum plano encontrado com os filtros atuais.
+    <!-- Modal de confirmação  -->
+    <div *ngIf="planoSelecionado" class="modal-overlay" (click)="fecharModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button
+          class="close-button"
+          (click)="fecharModal()"
+          aria-label="Fechar modal"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <h2>{{ planoSelecionado.nome }}</h2>
+        <div class="modal-body">
+          <p class="price">
+            {{ formatarValor(planoSelecionado.valor) }} <span>/mês</span>
+          </p>
+
+          <div *ngIf="planoSelecionado.descricao?.trim()">
+            <h3>Cobertura:</h3>
+            <p style="white-space: pre-line">
+              {{ planoSelecionado.descricao }}
+            </p>
+          </div>
+
+          <!-- Área de confirmação -->
+          <div *ngIf="!mensagemContratacao; else mensagemArea">
+            <button
+              mat-raised-button
+              color="primary"
+              class="confirm-button"
+              (click)="confirmarContratacao()"
+            >
+              Confirmar
+            </button>
+          </div>
+
+          <div *ngIf="mensagemContratacao" class="confirmation-message">
+            {{ mensagemContratacao }}
+          </div>
+        </div>
+      </div>
+
+      <ng-template #mensagemArea>
+        <div *ngIf="mensagemContratacao" class="contratacao-sucesso">
+          <mat-icon>check_circle</mat-icon>
+          <p>{{ mensagemContratacao }}</p>
+          <p *ngIf="planoSelecionado">Plano: {{ planoSelecionado.nome }}</p>
+          <p *ngIf="planoSelecionado">
+            Valor: {{ formatarValor(planoSelecionado.valor) }}/mês
+          </p>
+          <button mat-button (click)="fecharModal()">Fechar</button>
+        </div>
+      </ng-template>
+    </div>
   </div>
+</div>
+
+<!-- Mensagem de nenhum resultado -->
+<div
+  *ngIf="!carregando && (planos$ | async)?.length === 0"
+  class="nenhum-resultado"
+>
+  <mat-icon>search_off</mat-icon>
+  <h3>Nenhum plano encontrado</h3>
+  <button
+    mat-stroked-button
+    (click)="limparFiltros()"
+    aria-label="Limpar filtros"
+  >
+    Limpar filtros
+  </button>
 </div>
